@@ -1,0 +1,349 @@
+body{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+/*-------------------Login Styles -----------------*/
+.loginBG{
+    background-image: url('../images/bg-2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.loginBgGradient{
+    height:100vh;
+    width:100vw;
+    float:left;
+    /* background: rgb(44,83,158);
+    background: -moz-linear-gradient(top,  rgba(44,83,158,.9) 0%, rgba(44,83,158,.9) 100%);
+    background: -webkit-linear-gradient(top,  rgba(44,83,158,.9) 0%,rgba(44,83,158,.9) 100%);
+    background: linear-gradient(to bottom,  rgba(44,83,158,.9) 0%,rgba(44,83,158,.9) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c539e', endColorstr='#2c539e',GradientType=0 );*/
+
+    background: rgb(13,92,166); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(13,92,166,.9) 0%, rgba(32,124,229,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(13,92,166,.9) 0%,rgba(32,124,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(13,92,166,.9) 0%,rgba(32,124,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d5ca6', endColorstr='#207ce5',GradientType=0 ); /* IE6-9 */
+}
+
+.loginBox{
+    border:solid 2px #ffffff;
+    background-color: #ffffff;
+    border-radius: 1vw;
+    margin-top:16vw;
+    padding:2vw !important;
+}
+
+.loginHd{
+    color: #1c4094;
+    text-align: center;
+    font-size: 2vw;
+    margin-bottom: 1vw;
+}
+#email, #password{
+    margin-bottom: 1vw;
+}
+
+.red-text{
+    color: red;
+}
+
+.loginBtn{
+    width:100%;
+}
+
+/*------------------------------------------------------*/
+.pg-hd-row{
+   box-shadow: 0 8px 6px -6px black;
+   background-color: #f1f1f2;
+}
+
+.homeHDRhombus{
+    width: auto;
+    height: 0;
+    border-bottom: 5vw solid rgb(44,83,158);;
+    border-left: 5vw solid transparent;
+}
+
+.text-r{
+    text-align: right;
+}
+.homeHdLogoHolder{
+    padding: .3vw;
+    text-align: center;
+    float:left;
+    position: absolute;
+    top: .5vw;
+}
+
+.merchantLogo{
+    height: 3.5vw !important;
+}
+
+.username{
+    color:#ffffff;
+    margin-top:.5vw;
+    margin-bottom:.5vw;
+    font-size: 1vw;
+}
+
+/* .signoutBtn{
+    border:solid .05vw rgba(233, 63, 63, 1);
+    background-color: rgba(233, 63, 63, .8);
+    color:#ffffff;
+    padding:.5vw;
+    padding-top:.3vw;
+    text-decoration: none;
+    float:right;
+    border-radius: .5vw;
+    font-size: 1vw;
+} */
+
+/* .signoutBtn:hover{
+     background-color: rgba(233, 63, 63, .9);
+    text-decoration: none;
+} */
+
+.pg-heading{
+    /* background-color:rgb(13,92,166); */
+    color:#1c4094;
+    width:100%;
+    padding: 5px 15px;
+    background-color: #d8d8d8;
+    font-size:1.5vw;
+}
+
+#checkinList{
+    padding:0px;
+}
+
+.checkinInfoRow{
+    list-style-type: none;
+    padding:10px;
+    border:solid 1px #1c4094;
+    margin-bottom:10px;
+    padding-bottom: 0px;
+
+     /* box-shadow: 0 8px 6px -6px black; */
+     -webkit-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.42);
+-moz-box-shadow:    2px 2px 5px 0px rgba(50, 50, 50, 0.42);
+box-shadow:         2px 2px 5px 0px rgba(50, 50, 50, 0.42);
+}
+
+.mar-b-15px{
+    margin-bottom:15px;
+}
+
+.border-right{
+    border-right:solid 1px #1c4094;
+}
+
+.border-left{
+    border-left:solid 1px #1c4094;
+}
+
+.categoryHd{
+    /* background-color: #1c4094;
+    color:#ffffff;
+    text-align: center;
+    padding:5px; */
+color:#ffffff;
+    width: auto;
+height: 0;
+border-bottom: 1.5vw solid rgb(44,83,158);
+border-left: 1.5vw solid transparent;
+line-height: 1.5vw;
+font-size: 1vw;
+}
+
+.categoryItem{
+    font-size:14px;
+    text-align: center;
+}
+
+.categoryPrice{
+    font-size:16px;
+    font-weight: bold;
+    text-align: center;
+    float:right;
+}
+
+.itemAmt{
+    display: inline !important;
+}
+
+.custInfoLabel{
+    font-size:12px;
+    margin-bottom:0px;
+    width:100%;
+}
+
+.custInfoLabel span{
+    font-weight: bold;
+}
+
+.lastRow{
+    border-top:solid 1px #1c4094;
+    width:100%;
+    padding-top:8px;
+}
+.totalBox{
+    border-right: solid 1px #1c4094;
+    margin-right:10px;
+    padding-right:10px;
+    display:inline;
+    font-weight: bold;
+}
+
+.proceedBtn{
+    margin-top:-5px;
+}
+
+.ui-widget-header{
+  background-color:#1c4094 !important;
+  color: #ffffff !important;
+}
+
+.ui-dialog .ui-dialog-content{
+  padding-left:0px !important;
+  padding-right: 0px !important;
+}
+
+.table-bordered, .table-bordered td, .table-bordered th {
+  border:solid 1px #1c4094 !important;
+  font-size: 1vw;
+  margin-bottom: 0 !important;
+}
+
+.table .thead-light th {
+    color: #ffffff !important;
+    background-color: #2385E6 !important;
+    border-color: #2385E6 !important;
+    font-size: 1vw;
+}
+
+.btn-primary{
+  background-color: #1c4094 !important;
+}
+
+.checkBoxWrapper label{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    /* border: 2px solid rgba(139, 139, 139, .3);
+    color: #adadad; */
+    border: 1.5px solid #1c4094;
+    color: #1c4094;
+    border-radius: 5px;
+    white-space: nowrap;
+    margin: 3px 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+    width:100%;
+}
+
+.checkBoxWrapper label {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.checkBoxWrapper label::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    padding: 2px 6px 2px 2px;
+    content: "\f067";
+    transition: transform .3s ease-in-out;
+}
+
+.checkBoxWrapper input[type="checkbox"]:checked + label::before {
+    content: "\f00c";
+    transform: rotate(-360deg);
+    transition: transform .3s ease-in-out;
+}
+
+.checkBoxWrapper input[type="checkbox"]:checked + label {
+    border: 2px solid #1c4094;
+    background-color: #2385E6;
+    color: #fff;
+    transition: all .2s;
+}
+
+.checkBoxWrapper input[type="checkbox"] {
+  display: absolute;
+}
+.checkBoxWrapper input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.tRow{
+    font-weight: bold;
+}
+
+.confirmBtn{
+    font-size: .875rem !important;
+}
+
+#customOverlay
+{
+    display: none;
+    padding: 10px;
+    font-size:14pt;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: #aaaaaa;
+    opacity: .3;
+    text-align: center;
+    z-index: 100;
+}
+
+#SuccessDiv h5{
+    color: #000000;
+}
+
+#SuccessDivBox, #FailureDivBox{
+    display: none;
+    width:100%;
+    height:100%;
+    text-align: center;
+    position: absolute;
+    z-index: 101;
+    top:0px;
+}
+
+#SuccessDiv, #FailureDiv{
+    display: none;
+    width: 30%;
+    text-align: center;
+    margin: 10% auto;
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+#SuccessDiv img, #FailureDiv img{
+    width:10vw;
+    height:10vw;
+}
+
+#FailureDiv{
+    color: #801300;
+}
+
+#SuccessDiv{
+    color: #008000;
+}

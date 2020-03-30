@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Merchant Dashboard</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="font awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.css">
+    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.theme.css">
+    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.structure.css">
+    <script src="scripts/main.js"></script>
+
+    <!---Using Google Font---------------->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <!---Using MQTT---------------->
+    <script src="scripts/mqttws31.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+        integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="font awesome/5.4.1/css/all.css">
+    <script src="jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+    <script src="jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+
+    <!-- <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script> -->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col col-lg-12">
+                <div class="row pg-hd-row">
+                    <div class="col col-lg-2 col-sm-2">
+                        <span class="homeHdLogoHolder">
+                            <img class="img-fluid merchantLogo" />
+                        </span>
+                    </div>
+                    <div class="col col-lg-10 col-sm-10 text-r homeHDRhombus">
+                        <h6 class="username">merchant@gmail.com</h6>
+                        <a href="#" class="signoutBtn btn btn-danger btn-sm">Signout</a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-lg-12">
+                        <div class="row">
+                            <h3 class="pg-heading">Checkin Info</h3>
+                        </div>
+                        <ul id="checkinList">
+                            <li class="checkinInfoRow">
+                                <div class="row firstRow" id="c1">
+                                    <div class="col col-xs-12 col-sm-6 col-lg-3 border-right mar-b-15px">
+                                        <h6 class="categoryHd">Customer Info</h6>
+                                        <label class="custInfoLabel">Name: <span class="cName">Santosh K</span></label>
+                                        <label class="custInfoLabel">Checked In: <span>25/02/2020 1:45 PM</span></label>
+                                        <label class="custInfoLabel">Loyalty Point(s): <span>60</span></label>
+                                    </div>
+                                    <div class="col col-xs-12 col-sm-6 col-lg-3 border-right mar-b-15px">
+                                        <h6 class="categoryHd">Last Purchase</h6>
+
+                                        <div class="checkBoxWrapper">
+                                            <input type="checkbox" id="lpc1" value="48.00">
+                                            <label for="lpc1">
+                                                <span class="categoryItem">Coffee</span>
+                                                <span class="categoryPrice">&#8377;
+                                                    <span class="itemAmt">48.00</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col col-xs-12 col-sm-6 col-lg-3 border-right mar-b-15px">
+                                        <h6 class="categoryHd">Frequent Purchase</h6>
+
+                                        <div class="checkBoxWrapper">
+                                            <input type="checkbox" id="fpc1" value="40.00">
+                                            <label for="fpc1">
+                                                <span class="categoryItem">Juice</span>
+                                                <span class="categoryPrice">&#8377;
+                                                    <span class="itemAmt">40.00</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col col-xs-12 col-sm-6 col-lg-3 mar-b-15px">
+                                        <h6 class="categoryHd">Recommendations</h6>
+
+                                        <div class="checkBoxWrapper">
+                                            <input type="checkbox" id="recc1" value="30.00">
+                                            <label for="recc1">
+                                                <span class="categoryItem">Tea</span>
+                                                <span class="categoryPrice">&#8377;
+                                                    <span class="itemAmt">30.00</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-xs-12 text-center">
+                                        <div class="lastRow">
+                                            <div class="totalBox">
+                                                <label>Total:</label>
+                                                <span class="totalAmt">0.00</span>
+                                            </div>
+                                            <button type="button" data="c1" class="btn btn-primary btn-sm proceedBtn"
+                                                disabled>Proceed</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="checkinInfoRow">
+                                <div class="row firstRow" id="c2">
+                                    <div class="col col-xs-12 col-sm-6 col-lg-3 border-right mar-b-15px">
+                                        <h6 class="categoryHd">Customer Info</h6>
+                                        <label class="custInfoLabel">Name: <span class="cName">Mani</span></label>
+                                        <label class="custInfoLabel">Checked In: <span>25/02/2020 12:30
+                                                AM</span></label>
+                                        <label class="custInfoLabel">Loyalty Point(s): <span>120</span></label>
+                                    </div>
+                                    <div class="col col-xs-12 col-sm-6 col-lg-3 border-right mar-b-15px">
+                                        <h6 class="categoryHd">Last Purchase</h6>
+
+                                        <div class="checkBoxWrapper">
+                                            <input type="checkbox" id="lpc2" value="30.00">
+                                            <label for="lpc2">
+                                                <span class="categoryItem">Milk</span>
+                                                <span class="categoryPrice">&#8377;
+                                                    <span class="itemAmt">30.00</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col col-xs-12 col-sm-6 col-lg-3 border-right mar-b-15px">
+                                        <h6 class="categoryHd">Frequent Purchase</h6>
+
+                                        <div class="checkBoxWrapper">
+                                            <input type="checkbox" id="fpc2" value="40.00">
+                                            <label for="fpc2">
+                                                <span class="categoryItem">Coffee</span>
+                                                <span class="categoryPrice">&#8377;
+                                                    <span class="itemAmt">40.00</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col col-xs-12 col-sm-6 col-lg-3 border-right mar-b-15px">
+                                        <h6 class="categoryHd">Recommendations</h6>
+
+                                        <div class="checkBoxWrapper">
+                                            <input type="checkbox" id="recc2" value="30.00">
+                                            <label for="recc2">
+                                                <span class="categoryItem">Green Tea</span>
+                                                <span class="categoryPrice">&#8377;
+                                                    <span class="itemAmt">30.00</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-xs-12 text-center">
+                                        <div class="lastRow">
+                                            <div class="totalBox">
+                                                <label>Total:</label>
+                                                <span class="totalAmt">0.00</span>
+                                            </div>
+                                            <button type="button" data="c2" class="btn btn-primary btn-sm proceedBtn"
+                                                disabled>Proceed</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dialog" title="Basic dialog">
+        <table class="table table-bordered table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col" class="text-center">Item</th>
+                    <th scope="col" class="text-center">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2" align="center">
+                        <button type="button" class="btn btn-primary btn-sm confirmBtn">Confirm</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div id="customOverlay"> </div>
+    <div id="SuccessDivBox">
+        <div id="SuccessDiv">
+            <img src="./images/like_hand.png" />
+            <h1>Order Placed Successfully</h1>
+            <h5 class="customerName"><label>Customer Name: </label> <span></span></h5>
+            <h5 class="trxID"><label>Transaction ID: </label> <span> 8898989</span></h5>
+            <h5 class="orderID"><label>Order ID: </label> <span> 7879039</span></h5>
+        </div>
+    </div>
+
+    <div id="FailureDivBox">
+        <div id="FailureDiv">
+            <img src="./images/low-balance.png" />
+            <h1>Insufficient Balance</h1>
+        </div>
+    </div>
+
+    <div id="confirmLogout" title="Log out?">
+        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Are you sure that you
+            want to
+            log out?</p>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#confirmLogout").dialog({
+                autoOpen: false,
+                modal: true,
+                width: "40vw",
+                title: 'Alert',
+            });
+            $(".signoutBtn").click(function () {
+                $("#confirmLogout").dialog({
+                    buttons: {
+                        "Ok": function () {
+                            $(this).dialog("close"),
+                                sessionStorage.clear();
+                            window.location = 'index.html';
+                        },
+                        "Cancel": function () {
+                            $(this).dialog('close');
+                        }
+                    }
+                });
+
+                $("#confirmLogout").dialog("open");
+            });
+
+            var UName = sessionStorage.getItem("UserEmail");
+            $(".username").text(UName);
+
+            if (UName == "gelatoshop@tonetag.com") {
+                $(".merchantLogo").attr("src", "./images/gelato.png");
+            }
+            if (UName == "footwearshop@tonetag.com") {
+                $(".merchantLogo").attr("src", "./images/footwear.png");
+            }
+
+            var pData = sessionStorage.getItem("POD");
+
+            $.ajax({
+                url: "https://al3wisbxwe.execute-api.ap-south-1.amazonaws.com/Tonetag-Accenture/usecase",
+                type: "POST",
+                crossDomain: true,
+                //dataType: "jsonp",
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify({ "api_mode": 2, "pod_data": pData }),
+                success: function (response) {
+                    for (var i = 0, len = response.items.length; i < len; i++) {
+                        var chekInInfo = response.checkin_date;
+
+                        if (response.items[i].category_type == "Last Purchase") {
+                            var lpItem = response.items[i].item_name;
+                            var lpAmount = response.items[i].amount;
+                        }
+                        if (response.items[i].category_type == "Frequent Purchase") {
+                            var fpItem = response.items[i].item_name;
+                            var fpAmount = response.items[i].amount;
+                        }
+                        if (response.items[i].category_type == "Recommendations") {
+                            var recItem = response.items[i].item_name;
+                            var recAmount = response.items[i].amount;
+                        }
+                        if (response.items[i].category_type = "Loyalty Point") {
+                            var LPoints = response.items[i].amount;
+                        }
+                    };
+                    var list = '<li class="checkinInfoRow"><div class="row firstRow" id="' + response.app_id + '"><div class="col col-xs-12 col-sm-6 col-lg-3 border-right mar-b-15px"><h6 class="categoryHd">Customer Info</h6><label class="custInfoLabel">Name: <span class="cName">To be updated</span></label><label class="custInfoLabel">Checked In: <span>' + chekInInfo + '</span></label><label class="custInfoLabel">Loyalty Point(s): <span>' + LPoints + '</span></label></div><div class="col col-xs-12 col-sm-6 col-lg-3 border-right mar-b-15px"><h6 class="categoryHd">Last Purchase</h6><div class="checkBoxWrapper"><input type="checkbox" id="lp' + response.app_id + '" value="' + lpAmount + '"><label for="lp' + response.app_id + '"><span class="categoryItem">' + lpItem + '</span><span class="categoryPrice">&#8377; <span class="itemAmt">' + parseInt(lpAmount).toFixed(2) + '</span></span></label></div></div><div class="col col-xs-12 col-sm-6 col-lg-3 border-right mar-b-15px"><h6 class="categoryHd">Frequent Purchase</h6><div class="checkBoxWrapper"><input type="checkbox" id="fp' + response.app_id + '" value="' + fpAmount + '"><label for="fp' + response.app_id + '"><span class="categoryItem">' + fpItem + '</span><span class="categoryPrice">&#8377; <span class="itemAmt">' + parseInt(fpAmount).toFixed(2) + '</span></span></label></div></div><div class="col col-xs-12 col-sm-6 col-lg-3 mar-b-15px"><h6 class="categoryHd">Recommendations</h6><div class="checkBoxWrapper"><input type="checkbox" id="rec' + response.app_id + '" value="' + recAmount + '"><label for="rec' + response.app_id + '"><span class="categoryItem">' + recItem + '</span><span class="categoryPrice">&#8377; <span class="itemAmt">' + parseInt(recAmount).toFixed(2) + '</span></span></label></div></div></div><div class="row"><div class="col col-xs-12 text-center"><div class="lastRow"><div class="totalBox"><label>Total:</label><span class="totalAmt">0.00</span></div><button type="button" data="' + response.app_id + '" class="btn btn-primary btn-sm proceedBtn" disabled>Proceed</button></div></div></div></li>';
+                    $("#checkinList").append(list);
+                }
+            });
+
+            $(document).on('click', '.checkBoxWrapper input', function () {
+                var rowID = "#" + $(this).parent().parent().parent().attr("id");
+                getTotalAmountOfRow(rowID)
+            });
+
+            var custName;
+            $(document).on('click', '.proceedBtn', function () {
+                var thisRowID = "#" + $(this).parent().parent().parent().parent().find(".row:first").attr("id");
+                custName = $(this).parent().parent().parent().parent().find(".cName").text();
+                var costTotal = $(this).parent().parent().parent().parent().find(".totalAmt").text();
+                $("#dialog table tbody").html("");
+                $(thisRowID + " input:checked").each(function (index) {
+                    var item = $(thisRowID + " input:checked").eq(index).next("label").find(".categoryItem").text();
+                    var itemCost = $(thisRowID + " input:checked").eq(index).next("label").find(".categoryPrice .itemAmt").text();
+                    $("#dialog table tbody").append("<tr><td class='itemName'>" + item + "</td><td class='text-right'>" + itemCost + "</td></tr>");
+                });
+                $("#dialog table tbody").append("<tr class='tRow'><td>Total</td><td class='text-right tAmt'>" + costTotal + "</td></tr>");
+                $("#dialog").attr("data", $(this).parent().parent().parent().parent().find(".row:first").attr("id"));
+                $("#dialog").dialog({ title: "Customer: " + custName })
+                $("#dialog").dialog("open");
+            })
+
+            $("#dialog").dialog({
+                autoOpen: false,
+                modal: true,
+                width: "40vw",
+            });
+
+            $(".confirmBtn").click(function () {
+                debugger;
+                var appID = $(this).parent().parent().parent().parent().parent().attr("data");
+                var itemArray = [];
+                var tAmount = $(this).parent().parent().parent().prev("tbody").find(".tAmt").text();
+                $(this).parent().parent().parent().prev("tbody").find(".itemName").each(function () {
+                    itemArray.push($(this).text());
+                });
+
+                $.ajax({
+                    url: "https://al3wisbxwe.execute-api.ap-south-1.amazonaws.com/Tonetag-Accenture/usecase",
+                    type: "POST",
+                    crossDomain: true,
+                    //dataType: "jsonp",
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ "app_id": 12345, "api_mode": 4, "pod_data": pData, "amount": "70.00", items: ["Milk", "Juice"] }),
+                    success: function (response) {
+                        if (response.success == true) {
+                            if (response.code == 105) {
+                                $("#dialog").dialog("close");
+                                $("#" + appID).parent("li").remove();
+                                $(".customerName span").text(custName);
+                                $(".trxID span").text(response.TrxnReferenceId);
+                                $(".orderID span").text(response.order_id);
+                                $('#customOverlay, #SuccessDiv, #SuccessDivBox').show();
+                                setTimeout(function () { $("#SuccessDivBox, #customOverlay").fadeOut(1500); }, 5000);
+                                alert("Order Completed with order id as " + response.order_id + " and transaction reference id as " + response.TrxnReferenceId)
+                            }
+                            else if (response.code == 106) {
+                                $("#dialog").dialog("close");
+                                $("#FailureDiv h1").text(response.message);
+                                $('#customOverlay, #FailureDiv, #FailureDivBox').show();
+                                setTimeout(function () { $("#FailureDivBox, #customOverlay").fadeOut(1500); }, 5000);
+                                alert("Order Cancelled due to " + response.message);
+                            }
+                        }
+                    }
+                });
+
+            });
+        });
+
+
+        // Create a client instance
+        var client = new Paho.MQTT.Client("192.168.7.65", Number(9001), "");
+
+        // set callback handlers
+        client.onConnectionLost = onConnectionLost;
+        client.onMessageArrived = onMessageArrived;
+
+        // connect the client
+        client.connect({
+            onSuccess: onConnect,
+            userName: "tonetag",
+            password: "tonetag"
+        });
+
+        // called when the client connects
+        function onConnect() {
+            // Once a connection has been made, make a subscription and send a message.
+            console.log("onConnect");
+            client.subscribe("topic/test");
+            message = new Paho.MQTT.Message("bhehtyhtrhtr");
+            message.destinationName = "topic/test";
+            client.send(message);
+        }
+
+        // called when the client loses its connection
+        function onConnectionLost(responseObject) {
+            if (responseObject.errorCode !== 0) {
+                console.log("onConnectionLost:" + responseObject.errorMessage);
+            }
+        }
+
+        // called when a message arrives
+        function onMessageArrived(message) {
+            console.log("onMessageArrived:" + message.payloadString);
+        }
+
+        function getTotalAmountOfRow(id) {
+            var total = "0";
+            var chkArray = [];
+
+            /* look for all checkboes that it was checked */
+            $(id + " input:checked").each(function () {
+                chkArray.push($(this).val());
+            });
+            if (chkArray.length > 0) {
+                total = chkArray.reduce(function (a, b) {
+                    return parseInt(a) + parseInt(b);
+                });
+            }
+
+            $(id).parent().find(".totalAmt").text(parseInt(total).toFixed(2));
+
+            if (total > "0") {
+                $(id).parent().find(".proceedBtn").removeAttr("disabled");
+            }
+            else {
+                $(id).parent().find(".proceedBtn").removeAttr("disabled").attr("disabled", "disabled");
+            }
+        }
+    </script>
+
+</body>
+
+</html>

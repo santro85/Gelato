@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Merchant Dashboard</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="styles/styles.css">
+	<link rel="stylesheet" href="font awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="bootstrap-4.0.0/css/bootstrap.min.css">
+	<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script> -->
+	<script src="jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+
+	<script src="scripts/main.js"></script>
+
+	<!---Using Google Font---------------->
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+	<div class="container-fluid loginBgGradient">
+		<div class="row justify-content-md-center">
+			<div class="col col-lg-3 col-xs-8 col-sm-8 loginBox">
+				<h5 class="loginHd">Merchant Dashboard</h5>
+				<form id="loginForm">
+					<input class="form-control" required autocomplete="off" id="email" type="email" placeholder="Email">
+					<input class="form-control" required autocomplete="off" id="password" type="password"
+						placeholder="Password">
+					<i id="message" class="red-text"></i>
+					<button type="submit" class="btn btn-primary loginBtn">Login</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$(".loginBtn").click(function (e) {
+				var username = $("#email").val().trim();
+				var password = $("#password").val().trim();
+				var msg = "";
+				var form = $("form#loginForm");
+				if ($('form#loginForm > :input[required]:visible').val() != "") {
+					if (username == "gelatoshop@tonetag.com" && password == "12345678") {
+						sessionStorage.setItem("UserEmail", username);
+						sessionStorage.setItem("POD", "12345678");
+						window.location = "home.html";
+						return false;
+					}
+					else if (username == "footwearshop@tonetag.com" && password == "12345678") {
+						sessionStorage.setItem("UserEmail", username);
+						sessionStorage.setItem("POD", "31313131");
+						window.location = "home.html";
+						return false;
+					}
+					else {
+						e.preventDefault();
+						msg = "Invalid username or password!";
+						$("#message").html(msg);
+					}
+				}
+			});
+		});
+
+	</script>
+
+</body>
+
+</html>
